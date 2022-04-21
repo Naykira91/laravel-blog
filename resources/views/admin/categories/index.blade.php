@@ -2,7 +2,6 @@
 
 
 @section('content')
-    <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -78,15 +77,9 @@
                         <p>No categories</p>
                     @endif
                 </div>
-                <!-- /.card-body -->
                 <div class="card-footer">
                    {{ $categories->links() }}
                 </div>
-                <!-- /.card-footer-->
             </div>
-            <!-- /.card -->
-
         </section>
-        <!-- /.content -->
-    </div>
 @endsection
