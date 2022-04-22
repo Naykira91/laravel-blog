@@ -23,25 +23,26 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-primary">
+                    <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Create category</h3>
+                            <h3 class="card-title">Edit the tag "{{$tag->title}}"</h3>
                         </div>
 
 
-                        <form method="post" action="{{route('categories.store') }}" role="form">
+                        <form method="post" action="{{route('tags.update', ['tag'=>$tag->id]) }}" role="form">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" class="form-control  @error('title') is-invalid @enderror"
+                                    <input type="text" class="form-control  @error('title') is-invalid" @enderror
                                     name="title" id="title"
-                                           placeholder="Enter title of category">
+                                           value="{{$tag->title}}">
                                 </div>
                             </div>
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-success">Save</button>
                             </div>
                         </form>
                     </div>
