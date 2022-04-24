@@ -69,7 +69,9 @@
       }
     }
 
-    var _proto = CardRefresh.prototype;
+      $('.select2').select2()
+
+      var _proto = CardRefresh.prototype;
 
     _proto.load = function load() {
       var _this = this;

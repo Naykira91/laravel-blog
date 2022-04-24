@@ -25,7 +25,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Categories list</h3>
+                    <h3 class="card-title">Posts list</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -37,30 +37,32 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <a href="{{route('tags.create')}}" class="btn btn-success mb-2"> Add tag</a>
-                    @if(count($tags))
+                    <a href="{{route('posts.create')}}" class="btn btn-primary mb-2"> Add post</a>
+                    @if(count($posts))
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-nowrap">
                                 <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
                                     <th>Title</th>
-                                    <th>Slug</th>
+                                    <th>Category</th>
+                                    <th>Tags</th>
+                                    <th>Date</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($tags as $tag)
+                                @foreach($posts as $post)
                                  <tr>
-                                    <td>{{$tag->id}}</td>
-                                    <td>{{$tag->title}}</td>
+                                    <td>{{$post->id}}</td>
+                                    <td>{{$post->title}}</td>
+                                     <td>{{$post->category->title }}</td>
+                                    <td>{{$post->posts}}</td>
+                                    <td>{{$post->created_at}}</td>
                                     <td>
-                                        {{$tag->slug}}
-                                    </td>
-                                    <td>
-                                        <a href="{{ route("tags.edit", ['tag'=>$tag->id]) }}" class="btn btn-info btn-sm float-left mr-1">
+                                        <a href="{{ route("posts.edit", ['post'=>$post->id]) }}" class="btn btn-info btn-sm float-left mr-1">
                                             <i class="fas fa-pencil-alt"></i></a>
-                                        <form action="{{ route("tags.destroy", ['tag'=>$tag->id]) }}" method="post" class="float-left">
+                                        <form action="{{ route("posts.destroy", ['post'=>$post->id]) }}" method="post" class="float-left">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm float-left mr-1"
@@ -74,11 +76,11 @@
                             </table>
                         </div>
                     @else
-                        <p>No tags...</p>
+                        <p>No posts...</p>
                     @endif
                 </div>
                 <div class="card-footer">
-                   {{ $tags->links() }}
+                   {{ $posts->links() }}
                 </div>
             </div>
         </section>

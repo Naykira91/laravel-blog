@@ -38,7 +38,7 @@
                 </div>
                 <div class="card-body">
                     <a href="{{route('categories.create')}}" class="btn btn-primary mb-2"> Add category</a>
-                    @if(!empty($categories))
+                    @if(count($categories))
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-nowrap">
                                 <thead>
