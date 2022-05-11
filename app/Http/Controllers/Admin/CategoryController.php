@@ -83,7 +83,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
+        $category = Category::find($id);
+        if($category->posts->count()){
+            return redirect()->route('categories.index')->with('error', 'The category has posts. Please delete or edit posts first');
+
+        }
+       $category->delete();
         return redirect()->route('categories.index')->with('success', 'The category has been deleted');
     }
 }

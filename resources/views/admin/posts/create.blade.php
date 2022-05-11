@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <label for="description">Preview text</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" rows="5" placeholder="Enter ..."
-                                              name="description" content="description"></textarea>
+                                              name="description" id="description" ></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Content</label>

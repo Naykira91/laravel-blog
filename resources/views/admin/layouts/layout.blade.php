@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin.css') }}">
+    <style>
+        .ck-editor__editable_inline{
+            min-height: 200px;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -261,6 +266,11 @@
                         </div>
                     @endif
 
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         @if (session()->has('success'))
                             <div class="alert alert-success">
                                {{ session('success') }}
@@ -299,7 +309,48 @@
             $(this).closest('.has-treeview').addClass('menu-open');
         }
     });
-</script>
 
+    $(function () {
+        bsCustomFileInput.init();
+    });
+</script>
+<script src="{{ asset('/ckeditor5/build/ckeditor.js') }}"></script>
+<script src="{{ asset('/ckfinder/ckfinder/ckfinder.js') }}"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#content' ), {
+
+            licenseKey: '',
+
+
+
+        } )
+        .then( editor => {
+            window.editor = editor;
+
+
+
+
+        } )
+        .catch( error => {
+            console.error( 'Oops, something went wrong!' );
+            console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+            console.warn( 'Build id: az3l0ob8svjl-5t63j6awjmp4' );
+            console.error( error );
+        } );
+    ClassicEditor
+        .create( document.querySelector( '#description' ), {
+            ckfinder: {
+                uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+            },
+            alignment: {
+                options: [ 'left', 'right' ]
+            },
+            toolbar: [ 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo', '|', 'link', 'alignment' ]
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 </body>
 </html>

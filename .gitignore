@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /public/upload
+/public/ckeditor5
+/public/ckfinder
 /storage/*.key
 /storage
 /vendor
@@ -15,3 +17,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+

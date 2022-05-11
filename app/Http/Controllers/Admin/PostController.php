@@ -95,7 +95,9 @@ class PostController extends Controller
 
         $data = $request->all();
         $post = Post::find($id);
-        $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
+        if($file = Post::uploadImage($request, $post->thumbnail)){
+            $data['thumbnail'] = $file;
+        }
 
         $post->update($data);
         $post->tags()->sync($request->tags);
