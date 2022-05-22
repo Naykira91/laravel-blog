@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PublicPostController::class, 'index'])->name('home');
 Route::get('/article/{slug}', [PublicPostController::class, 'show'])->name('detail.post');
 Route::get('/category/{slug}', [PublicCategoryController::class, 'show'])->name('detail.category');
+Route::get('/tag/{slug}', [PublicTagController::class, 'show'])->name('detail.tag');
 
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>'admin'], function(){
     Route::get('/',[Maincontroller::class, 'index'])->name('admin.index');

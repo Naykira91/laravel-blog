@@ -62,6 +62,12 @@ class Post extends Model
         return asset("upload/{$this->thumbnail}");
     }
 
+    public function getContent()
+    {
+        if(strpos($this->content, '<img ') !== false){
+            return str_replace('<img ', '<img class="img-fluid"', $this->content);
+        }
+    }
 
     public function getPostDate()
     {
