@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\PublicCategoryController;
 use App\Http\Controllers\PublicPostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
