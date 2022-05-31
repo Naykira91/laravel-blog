@@ -11000,6 +11000,11 @@ hr.invis3 {
     border-radius: 50%
 }
 
+
+.market-header .form-inline .form-control.is-invalid{
+    border: 2px solid red;
+}
+
 @charset "UTF-8";
 
 /*!

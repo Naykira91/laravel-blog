@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\PublicCategoryController;
 use App\Http\Controllers\PublicPostController;
 use App\Http\Controllers\PublicTagController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::get('/', [PublicPostController::class, 'index'])->name('home');
 Route::get('/article/{slug}', [PublicPostController::class, 'show'])->name('detail.post');
 Route::get('/category/{slug}', [PublicCategoryController::class, 'show'])->name('detail.category');
 Route::get('/tag/{slug}', [PublicTagController::class, 'show'])->name('detail.tag');
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>'admin'], function(){
     Route::get('/',[Maincontroller::class, 'index'])->name('admin.index');
