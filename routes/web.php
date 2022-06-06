@@ -30,6 +30,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>'admin'], f
     Route::resource('/categories',CategoryController::class);
     Route::resource('/tags',TagController::class);
     Route::resource('/posts',PostController::class);
+    Route::resource('/comments',CommentController::class);
 });
 
 Route::group(['middleware'=> 'guest'], function(){

@@ -38,6 +38,7 @@
         </div><!-- end media -->
 
         <div class="blog-content">
+           
             {!! $post->getContent() !!}
         </div><!-- end content -->
 

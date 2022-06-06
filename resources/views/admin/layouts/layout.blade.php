@@ -243,6 +243,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('comments.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-comment"></i>
+                            <p>Comments</p>
+                        </a>
+                    </li>
 
                 </ul>
             </nav>

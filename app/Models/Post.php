@@ -67,6 +67,7 @@ class Post extends Model
         if(strpos($this->content, '<img ') !== false){
             return str_replace('<img ', '<img class="img-fluid"', $this->content);
         }
+        return $this->content;
     }
 
     public function getPostDate()
@@ -78,4 +79,19 @@ class Post extends Model
     {
         return $query->where('title', 'LIKE',"%{$s}%");
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Получить комментарии к этой статье, сгруппированные по parent_id
+     * @return static
+     */
+    public function getComments()
+    {
+        return $this->comments()->with('owner')->get()->groupBy('parent_id');
+    }
+
 }
